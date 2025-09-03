@@ -10,12 +10,13 @@ export default function Home() {
       </h1>
       <p className="mb-8 leading-relaxed">I develop software and hardware solutions.</p>
       <div className="flex justify-center">
-        <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-        <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
+        <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Connect</button>
+        <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Explore</button>
       </div>
     </div>
     <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-      <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"></img>
+      {/* <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600"></img> */}
+      <Image className="object-cover object-center shadow-2xl rounded-4xl" width={500} height={500} alt="hero" src="/images/VipulKushwaha.webp"></Image>
     </div>
   </div>
 </section>

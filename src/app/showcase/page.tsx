@@ -10,24 +10,24 @@ export default async function Showcase() {
                     <div className="flex flex-wrap md:-m-2 -m-1">
                         <div className="flex flex-wrap w-1/2">
                             <div className="md:p-2 p-1 w-1/2">
-                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://dummyimage.com/500x300"></img>
+                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://picsum.photos/id/94/500/300"></img>
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
-                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://dummyimage.com/501x301"></img>
+                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://picsum.photos/id/90/501/301"></img>
                             </div>
                             <div className="md:p-2 p-1 w-full">
-                                <img alt="gallery" className="w-full h-full object-cover object-center block" src="https://dummyimage.com/600x360"></img>
+                                <img alt="gallery" className="w-full h-full object-cover object-center block" src="https://picsum.photos/id/98/600/360"></img>
                             </div>
                         </div>
                         <div className="flex flex-wrap w-1/2">
                             <div className="md:p-2 p-1 w-full">
-                                <img alt="gallery" className="w-full h-full object-cover object-center block" src="https://dummyimage.com/601x361"></img>
+                                <img alt="gallery" className="w-full h-full object-cover object-center block" src="https://picsum.photos/id/99/601/361"></img>
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
-                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://dummyimage.com/502x302"></img>
+                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://picsum.photos/id/100/502/302"></img>
                             </div>
                             <div className="md:p-2 p-1 w-1/2">
-                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://dummyimage.com/503x303"></img>
+                                <img alt="gallery" className="w-full object-cover h-full object-center block" src="https://picsum.photos/id/101/503/303"></img>
                             </div>
                         </div>
                     </div>

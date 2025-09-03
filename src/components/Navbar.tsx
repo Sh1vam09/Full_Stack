@@ -12,6 +12,7 @@ export default async function Navbar() {
                         <span className="ml-3 text-xl">Vipul Kushwaha</span>
                     </a>
                     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
+                        <Link href="/" className="mr-5 hover:text-gray-900">Home</Link>
                         <Link href="/showcase" className="mr-5 hover:text-gray-900">Showcase</Link>
                         <Link href="/blog" className="mr-5 hover:text-gray-900">Blog</Link>
                         <Link href="/contact" className="mr-5 hover:text-gray-900">Contact</Link>
