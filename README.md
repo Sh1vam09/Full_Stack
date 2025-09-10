@@ -34,3 +34,25 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# API Routes
+
+GET localhost:3000/api/blog/
+
+POST localhost:3000/api/blog/
+```json
+{
+  "title": "A Brand New Blog Post",
+  "content": "This is the content for the new blog post created with a POST request."
+}
+```
+
+PUT localhost:3000/api/blog/1
+```json
+{
+  "title": "Updated Title via PUT",
+  "content": "This content has been successfully updated using a PUT request."
+}
+```
+
+DELETE localhost:3000/api/blog/3
