@@ -5,7 +5,6 @@ export default function Navbar() {
         <header className="sticky top-0 z-50 w-full border-b border-b-[var(--border-color)] bg-[var(--background)]/80 backdrop-blur-sm">
             <div className="container mx-auto flex h-16 max-w-screen-xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-2">
-                    {/* Your new custom SVG Icon */}
                     <svg
                         fill="currentColor"
                         version="1.1"
@@ -35,7 +34,7 @@ export default function Navbar() {
                 <nav className="hidden items-center space-x-6 text-sm font-medium md:flex">
                     <Link href="/" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">Home</Link>
                     <Link href="/projects" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">Projects</Link>
-                    <Link href="/showcase" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">Showcase</Link>
+                    <Link href="/tech-stack" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">Tech Stack</Link>
                     <Link href="/contact" className="text-[var(--muted-foreground)] transition-colors hover:text-[var(--foreground)]">Contact</Link>
                 </nav>
             </div>
