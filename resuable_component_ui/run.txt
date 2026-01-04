@@ -1,0 +1,4 @@
+http://localhost:3000/about
+http://localhost:3000/projects
+http://localhost:3000/projects/web-design
+http://localhost:3000/projects/123

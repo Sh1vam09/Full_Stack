@@ -1,0 +1,44 @@
+npm install prisma --save-dev
+npm install @prisma/client
+
+npx prisma init --datasource-provider sqlite
+
+//create data model and then
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Add this model:
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+npx prisma migrate dev --name init
+
+This creates a file named dev.db inside the prisma folder.
+It also generates the TypeScript types automatically.
+
+npx prisma migrate dev --name add_auth_tables
+
+
+if changed the role then do this
+npx prisma migrate dev --name make_everyone_admin
+
+page.tsx
+  const isAdmin = true;
+
+
+npx shadcn@latest init
+npm install sonner lucide-react
+npx shadcn@latest add button card input label checkbox

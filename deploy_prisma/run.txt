@@ -1,0 +1,90 @@
+npm install prisma --save-dev
+npm install @prisma/client
+
+npx prisma init --datasource-provider sqlite
+
+//create data model and then
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Add this model:
+model Project {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+npx prisma migrate dev --name init
+
+This creates a file named dev.db inside the prisma folder.
+It also generates the TypeScript types automatically.
+
+npx prisma migrate dev --name add_auth_tables
+
+
+if changed the role then do this
+npx prisma migrate dev --name make_everyone_admin
+
+page.tsx
+  const isAdmin = true;
+
+
+npx shadcn@latest init
+npm install sonner lucide-react
+npx shadcn@latest add button card input label checkbox
+
+
+
+Go to Supabase and create a new project.
+
+Once created, go to Project Settings > Database.
+
+Find the Connection String section and switch to the URI tab.
+
+Copy the connection string. It will look like this: postgresql://postgres.ka...:[YOUR-PASSWORD]@aws-0-us-east-1.pooler.supabase.com:6543/postgres (Note: Use the "Transaction Pooler" connection string (port 6543) if you are deploying to a serverless environment like Vercel).
+
+
+
+4. Database Migration
+Since you are switching databases, you need to push your schema to Supabase. You can do this from your local machine before deploying.
+
+Update your local .env file with the Supabase DATABASE_URL.
+
+Run the migration command:
+
+Bash
+
+npx prisma db push
+(This will create the tables in your Supabase database).
+
+5. Deploy to Vercel
+Push your changes (including the modified schema.prisma, auth.ts, and package.json) to GitHub.
+
+Go to your Vercel Dashboard and click "Add New..." > "Project".
+
+Import your GitHub repository.
+
+Add the environment variables listed in Step 3.
+
+Click Deploy.
+
+6. Post-Deployment Checklist
+Once your site is live (e.g., https://my-portfolio.vercel.app):
+
+Update BETTER_AUTH_URL: Go to Vercel Settings > Environment Variables and set BETTER_AUTH_URL to your actual deployed domain (e.g., https://my-portfolio.vercel.app). Redeploy for this to take effect.
+
+Update OAuth Providers: Go to your Google Cloud Console and GitHub Developer Settings. Update the "Authorized redirect URIs" to match your production domain:
+
+Change http://localhost:3000/api/auth/callback/google
+
+To https://my-portfolio.vercel.app/api/auth/callback/google
