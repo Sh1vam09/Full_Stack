@@ -1,0 +1,16 @@
+npx create-next-app@latest my-portfolio
+
+Would you like to use TypeScript? → Yes (Highly recommended for better coding tools, even if you are new to it).
+
+Would you like to use ESLint? → Yes (Keeps your code clean).
+
+Would you like to use Tailwind CSS? → Yes (Best way to style Next.js apps quickly).
+
+Would you like to use src/ directory? → Yes (Keeps your project organized).
+
+Would you like to use App Router? (recommended) → YES (Crucial! This is the feature that makes nested/dynamic routing easy).
+
+Would you like to customize the default import alias (@/*)? → No (The default is fine)
+
+cd my-portfolio
+npm run dev
