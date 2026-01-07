@@ -1,44 +1,94 @@
-npm install prisma --save-dev
-npm install @prisma/client
+It is important to clarify a small technical point: MongoDB Compass is just a tool to view your data (like a browser for your database). The actual database running on your computer is called MongoDB Community Server.
+To connect Next.js to a database running locally on your machine, follow these steps.
+## 🛠️ Database Setup: Connecting Local MongoDB to Next.js
 
-npx prisma init --datasource-provider sqlite
+This guide explains how to connect your Next.js application to a local MongoDB instance running on your machine and how to manage it using **MongoDB Compass**.
 
-//create data model and then
-// prisma/schema.prisma
+### 1. Prerequisites
+* **MongoDB Community Server:** Ensure you have the database installed and running locally.
+* **MongoDB Compass:** Installed to visualize your local data.
 
-generator client {
-  provider = "prisma-client-js"
+### 2. Install Dependencies
+In your project terminal, run:
+
+```bash
+npm install mongoose
+# or
+yarn add mongoose
+
+3. Configure Local Environment Variables
+Create a .env.local file in the root of your project. For a local setup, your connection string usually points to localhost.
+# Format: mongodb://localhost:27017/YourDatabaseName
+MONGODB_URI=mongodb://127.0.0.1:27017/nextjs_db
+
+> Note: Using 127.0.0.1 is often more stable than localhost in Node.js environments.
+> 
+4. Create the Connection Utility
+This script manages the connection to your local MongoDB server and prevents multiple connections during development.
+File: lib/mongodb.js
+import mongoose from 'mongoose';
+
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable');
 }
 
-datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+let cached = global.mongoose;
+
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null };
 }
 
-// Add this model:
-model Project {
-  id          String   @id @default(uuid())
-  title       String
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+async function dbConnect() {
+  if (cached.conn) return cached.conn;
+
+  if (!cached.promise) {
+    cached.promise = mongoose.connect(MONGODB_URI).then((mongoose) => {
+      return mongoose;
+    });
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
 }
 
-npx prisma migrate dev --name init
+export default dbConnect;
 
-This creates a file named dev.db inside the prisma folder.
-It also generates the TypeScript types automatically.
+5. Define a Schema
+File: models/User.js
+import mongoose from 'mongoose';
 
-npx prisma migrate dev --name add_auth_tables
+const UserSchema = new mongoose.Schema({
+  name: String,
+  email: { type: String, required: true, unique: true },
+});
 
+export default mongoose.models.User || mongoose.model('User', UserSchema);
 
-if changed the role then do this
-npx prisma migrate dev --name make_everyone_admin
+6. Create an API Route
+File: app/api/users/route.js
+import dbConnect from '@/lib/mongodb';
+import User from '@/models/User';
+import { NextResponse } from 'next/server';
 
-page.tsx
-  const isAdmin = true;
+export async function POST(request) {
+  await dbConnect();
+  try {
+    const body = await request.json();
+    const user = await User.create(body);
+    return NextResponse.json({ success: true, data: user });
+  } catch (error) {
+    return NextResponse.json({ success: false, error: error.message }, { status: 400 });
+  }
+}
 
+7. Verifying in MongoDB Compass
+ * Open MongoDB Compass.
+ * Click "New Connection".
+ * Enter mongodb://localhost:27017 and click Connect.
+ * Once your Next.js app runs a database query, you will see the nextjs_db database appear automatically in the sidebar.
+<!-- end list -->
 
-npx shadcn@latest init
-npm install sonner lucide-react
-npx shadcn@latest add button card input label checkbox
+---
+
+Since you are running MongoDB locally, would you like me to show you how to set up **MongoDB as a Windows Service** or **macOS Brew Service** so it starts automatically when you turn on your computer?
