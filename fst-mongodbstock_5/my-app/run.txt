@@ -1,0 +1,48 @@
+============================================================
+PROJECT SETUP: NEXT.JS + MONGODB + TYPESCRIPT
+============================================================
+
+Follow these steps exactly to get the project running on your machine:
+
+STEP 1: INSTALL DEPENDENCIES
+----------------------------
+Open your terminal in the project folder and run:
+> npm install
+
+STEP 2: SET UP MONGODB (LOCAL)
+----------------------------
+1. Ensure you have MongoDB Community Server installed and running.
+2. Open MongoDB Compass.
+3. Click "New Connection" and connect to: mongodb://localhost:27017
+4. Create a new Database named: my_store
+5. Inside "my_store", create a collection named: products
+6. Add a test document (Add Data -> Insert Document):
+   {
+     "name": "Sample Product",
+     "price": 25.00,
+     "stock": 3,
+     "image": "https://placehold.co/200"
+   }
+
+STEP 3: ENVIRONMENT VARIABLES
+-----------------------------
+1. Create a file in the ROOT of this project named: .env.local
+2. Paste the following line into that file:
+   MONGODB_URI=mongodb://localhost:27017/my_store
+
+STEP 4: RUN THE PROJECT
+-----------------------
+1. In your terminal, run:
+   > npm run dev
+2. Open your browser and go to: http://localhost:3000
+
+STEP 5: TROUBLESHOOTING
+-----------------------
+- If you see "MONGODB_URI is undefined", check that your .env.local file 
+  is in the main folder (root), not inside /src or /app.
+- If the products don't show up, ensure your Collection name in Compass 
+  is "products" (lowercase and plural).
+- If you change the .env.local file, you MUST restart the terminal 
+  (Ctrl+C then npm run dev).
+
+============================================================
