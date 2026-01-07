@@ -1,0 +1,19 @@
+# Practical Exam Commands: Guesthouse Record App
+
+## 1. Create the Next.js Project
+Run this command to create the project. When asked, select **TypeScript**, **Tailwind CSS**, and **App Router**.
+```bash
+npx create-next-app@latest guesthouse-record
+
+# Practical Exam Commands: Guesthouse Record App
+
+## 1. Create the Next.js Project
+Run this command to create the project. When asked, select **TypeScript**, **Tailwind CSS**, and **App Router**.
+```bash
+npx create-next-app@latest guesthouse-record
+
+npx prisma init --datasource-provider sqlite
+
+npx prisma migrate dev --name init
+npm run dev
+npm run dev
