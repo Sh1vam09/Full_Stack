@@ -1,0 +1,23 @@
+:root {
+  --sb-bg: #0f172a;
+  --sb-active: #6366f1;
+  --text-main: #334155;
+  --bg-main: #f1f5f9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+main {
+  flex: 1;
+  transition: all 0.4s ease;
+}
